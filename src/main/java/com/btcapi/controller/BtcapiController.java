@@ -19,6 +19,7 @@ import com.btcapi.util.CsvPriceReader;
 @RestController
 public class BtcapiController {
 
+    @GetMapping("/ping")
     public ResponseEntity<String> ping() {
         return ResponseEntity.ok("teste!");
     }
