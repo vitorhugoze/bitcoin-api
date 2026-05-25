@@ -57,7 +57,7 @@ push main → GitHub Actions → build multi-arch → GHCR → Jenkins → deplo
 
 **GitHub Actions** compila e publica a imagem no GitHub Container Registry (`ghcr.io/vitorhugoze/bitcoin-api:latest`) a cada push na `main`.
 
-**Jenkins** detecta a atualização, derruba o container anterior e sobe o novo automaticamente.
+**Jenkins** derruba o container anterior, busca imagem atualizada e sobe o novo automaticamente.
 
 ---
 
