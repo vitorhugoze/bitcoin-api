@@ -21,7 +21,7 @@ public class BtcapiController {
 
     @GetMapping("/ping")
     public ResponseEntity<String> ping() {
-        return ResponseEntity.ok("teste!");
+        return ResponseEntity.ok("pong pong");
     }
 
     @GetMapping("/prices")
