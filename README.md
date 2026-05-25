@@ -19,15 +19,6 @@ A API roda em `http://163.176.214.184:12055`.
 
 > Qualquer pessoa pode fazer requisições para este endpoint público se quiser testar a API.
 
-### GET /ping
-
-Health check simples.
-
-```
-curl http://163.176.214.184:12055/ping
-# → pingo
-```
-
 ### GET /prices
 
 Retorna os registros históricos de preço do Bitcoin. Aceita filtro de período via headers.
