@@ -19,6 +19,11 @@ import com.btcapi.util.CsvPriceReader;
 @RestController
 public class BtcapiController {
 
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("pingi");
+    }
+
     @GetMapping("/prices")
     public ResponseEntity<List<PriceRecord>> getBtcPrices(
             @RequestHeader(value = "iniDate", required = false) String iniDate,
