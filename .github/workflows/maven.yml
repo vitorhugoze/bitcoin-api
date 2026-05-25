@@ -14,16 +14,9 @@ jobs:
     - name: Checkout código
       uses: actions/checkout@v4
 
-    # --- CONFIGURAÇÃO PARA MULTI-ARQUITETURA (ARM) ---
-
-    # Permite emular a arquitetura ARM no runner padrão do GitHub
+    # Permite executar e compilar binários ARM em runners x86 do GitHub
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
-
-    # Cria o construtor Buildx do Docker
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v3
 
     # Autenticação no Docker Hub
     - name: Log in to Docker Hub
@@ -32,15 +25,13 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    # Faz o build usando o Dockerfile Multi-stage (compila e gera a imagem final para ambas as arquiteturas)
+    # Build simples focado apenas em ARM64 usando a CLI padrão do Docker
     - name: Build and push Docker image
-      uses: docker/build-push-action@v5
-      with:
-        builder: ${{ steps.buildx.outputs.name }}
-        context: .
-        file: ./Dockerfile
-        push: true
-        platforms: linux/amd64,linux/arm64
-        no-cache: true
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/img-api-bitcoin:latest
+      run: |
+        docker build \
+          --platform linux/arm64 \
+          --no-cache \
+          -t ${{ secrets.DOCKERHUB_USERNAME }}/img-api-bitcoin:latest \
+          -f ./Dockerfile .
+        
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/img-api-bitcoin:latest
