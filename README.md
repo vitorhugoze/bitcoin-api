@@ -7,7 +7,7 @@ API REST em Spring Boot para consulta de séries históricas de preços de Bitco
 ## Tecnologias
 
 - Java + Spring Boot
-- Docker (multi-arch: `amd64` e `arm64`)
+- Docker - containerização
 - GitHub Actions — build e publicação no GHCR
 - Jenkins — deploy automático na instância
 
@@ -15,14 +15,16 @@ API REST em Spring Boot para consulta de séries históricas de preços de Bitco
 
 ## Endpoints
 
-A API roda na porta `12055`.
+A API roda em `http://163.176.214.184:12055`.
+
+> Qualquer pessoa pode fazer requisições para este endpoint público se quiser testar a API.
 
 ### GET /ping
 
 Health check simples.
 
 ```
-curl http://localhost:12055/ping
+curl http://163.176.214.184:12055/ping
 # → pingo
 ```
 
@@ -36,7 +38,7 @@ Retorna os registros históricos de preço do Bitcoin. Aceita filtro de período
 | `finDate` | não | `AAAA-MM-DD` |
 
 ```
-curl http://localhost:12055/prices \
+curl http://163.176.214.184:12055/prices \
   -H "iniDate: 2024-01-01" \
   -H "finDate: 2024-03-31"
 ```
