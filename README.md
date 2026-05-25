@@ -1,13 +1,13 @@
 # bitcoin-api
 
-API REST em Spring Boot para consulta de séries históricas de preços de Bitcoin, com pipeline CI/CD automatizado via GitHub Actions e Jenkins.
+API REST em Spring Boot para consulta histórica de preços de Bitcoin, com pipeline CI/CD automatizado via GitHub Actions e Jenkins.
 
 ---
 
 ## Tecnologias
 
 - Java + Spring Boot
-- Docker - containerização
+- Docker — containerização
 - GitHub Actions — build e publicação no GHCR
 - Jenkins — deploy automático na instância
 
