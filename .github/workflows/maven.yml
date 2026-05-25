@@ -44,4 +44,3 @@ jobs:
         no-cache: true
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/img-api-bitcoin:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/img-api-bitcoin:${{ github.sha }}
